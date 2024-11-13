@@ -10,27 +10,22 @@ const QUESTIONS = [
   {
     id: 1,
     text: "¿Te sientes preocupado/a por cosas cotidianas, al punto que te cuesta concentrarte en otras tareas?",
-    category: "Ansiedad",
   },
   {
     id: 2,
     text: "¿Has notado cambios en tus patrones de sueño (dificultad para dormir o dormir demasiado)?",
-    category: "Depresión",
   },
   {
     id: 3,
     text: "¿Te sientes abrumado/a por tus emociones con frecuencia?",
-    category: "Regulación Emocional",
   },
   {
     id: 4,
     text: "¿Has perdido interés en actividades que antes disfrutabas?",
-    category: "Depresión",
   },
   {
     id: 5,
     text: "¿Experimentas momentos de tensión física como dolor de cabeza o tensión muscular?",
-    category: "Ansiedad Física",
   },
 ];
 
@@ -81,9 +76,6 @@ export default function QuestionsPage() {
           <div className="flex justify-between items-center">
             <div className="text-sm font-medium text-gray-500">
               Pregunta {currentQuestion + 1} de {QUESTIONS.length}
-            </div>
-            <div className="text-sm font-medium text-purple-600">
-              {QUESTIONS[currentQuestion].category}
             </div>
           </div>
           <div className="w-full h-2 bg-purple-100 rounded-full overflow-hidden">

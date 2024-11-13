@@ -55,7 +55,7 @@ export default function ProfilePage() {
           className="text-center space-y-2 mt-6"
         >
           <h1 className="text-4xl font-bold text-gray-800">Martina Gomez</h1>
-          <p className="text-xl text-gray-600">Misiones, Posadas</p>
+          <p className="text-xl text-gray-600">Cordoba, Villa Boedo</p>
         </motion.div>
 
         {/* Stats Overview */}
@@ -126,11 +126,11 @@ export default function ProfilePage() {
               </div>
               <div className="space-y-1">
                 <p className="text-gray-500">Edad</p>
-                <p className="text-gray-700">20 años</p>
+                <p className="text-gray-700">17 años</p>
               </div>
               <div className="space-y-1">
                 <p className="text-gray-500">Miembro desde</p>
-                <p className="text-gray-700">Enero 2024</p>
+                <p className="text-gray-700">Noviembre 2024</p>
               </div>
             </div>
           </Card>
