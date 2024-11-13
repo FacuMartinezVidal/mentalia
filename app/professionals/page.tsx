@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -60,53 +61,161 @@ export default function ProfessionalsPage() {
   });
 
   return (
-    <div className="flex min-h-screen bg-[#e6f4f6]">
-      <div className="w-full max-w-md mx-auto p-4 space-y-6">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold">Mentalia</h1>
-          <h2 className="text-xl mt-2">Profesionales</h2>
-        </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="flex min-h-screen bg-gradient-to-b from-[#e6f4f6] to-[#f0f7f8]"
+    >
+      <div className="w-full max-w-3xl mx-auto p-6 space-y-8">
+        {/* Header Section */}
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-center space-y-4"
+        >
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-[#4a148c] to-[#b388ff] text-transparent bg-clip-text">
+            Mentalia
+          </h1>
+          <h2 className="text-2xl text-gray-700 font-medium">Profesionales</h2>
+        </motion.div>
 
-        <div className="space-y-4">
+        {/* Filter Section */}
+        <motion.div
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="bg-white/50 rounded-2xl p-4 shadow-sm"
+        >
+          <RadioGroup
+            value={filter}
+            onValueChange={setFilter}
+            className="flex flex-wrap gap-3 justify-center"
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem
+                value="todos"
+                id="todos"
+                className="text-[#4a148c]"
+              />
+              <Label htmlFor="todos" className="cursor-pointer">
+                Todos
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem
+                value="psicologo"
+                id="psicologo"
+                className="text-[#4a148c]"
+              />
+              <Label htmlFor="psicologo" className="cursor-pointer">
+                Psicólogos
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem
+                value="psiquiatra"
+                id="psiquiatra"
+                className="text-[#4a148c]"
+              />
+              <Label htmlFor="psiquiatra" className="cursor-pointer">
+                Psiquiatras
+              </Label>
+            </div>
+          </RadioGroup>
+        </motion.div>
+
+        {/* Professionals Grid */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="grid gap-4 sm:grid-cols-2"
+        >
           {filteredProfessionals.map((professional) => (
-            <Card key={professional.id} className="bg-[#1e3a5f] text-white p-4">
-              <div className="flex gap-4">
-                <Image
-                  src={professional.image}
-                  alt={professional.name}
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 rounded-full object-cover"
-                />
-                <div className="flex-1">
-                  <h3 className="text-lg font-semibold">{professional.name}</h3>
-                  <p className="text-sm opacity-90">
-                    {professional.profession} |{" "}
-                    <span className="text-red-500">●</span>{" "}
-                    {professional.location}
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      className="rounded-sm"
+            <motion.div
+              key={professional.id}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card className="bg-white hover:bg-white transition-all duration-300 hover:shadow-md p-5">
+                <div className="flex gap-4">
+                  <div className="w-20 h-20 shrink-0 rounded-full bg-[#e9d5ff] flex items-center justify-center">
+                    <svg
+                      className="w-10 h-10 text-[#4a148c]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      Ver Info.
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      className="rounded-sm"
-                    >
-                      Contactar
-                    </Button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  </div>
+
+                  <div className="flex-1 space-y-2">
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800">
+                        {professional.name}
+                      </h3>
+                      <p className="text-sm text-gray-600">
+                        {professional.profession} • {professional.location}
+                      </p>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="bg-[#e9d5ff] hover:bg-[#dbb8ff] border-none text-[#4a148c]"
+                          >
+                            Ver Info
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>{professional.name}</DialogTitle>
+                          </DialogHeader>
+                          {/* Add professional details here */}
+                        </DialogContent>
+                      </Dialog>
+
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="bg-[#4a148c] hover:bg-[#6a1b9a] text-white border-none"
+                      >
+                        Contactar
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
+        {/* No Results Message */}
+        {filteredProfessionals.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="text-center py-10"
+          >
+            <p className="text-gray-500">
+              No se encontraron profesionales para esta categoría.
+            </p>
+          </motion.div>
+        )}
       </div>
-    </div>
+    </motion.div>
   );
 }

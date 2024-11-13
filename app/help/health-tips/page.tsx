@@ -1,119 +1,223 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
-import Image from "next/image";
+import {
+  Heart,
+  Brain,
+  Users,
+  ArrowRight,
+  Youtube,
+  Sparkles,
+  Leaf,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function HealthTipsPage() {
   return (
-    <div className="flex min-h-screen bg-[#e6f4f6]">
-      <div className="w-full max-w-md mx-auto p-4 space-y-6">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold">Mentalia</h1>
-          <h2 className="text-xl mt-2">Tips para tu Salud Mental</h2>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-[#e6f4f6]"
+    >
+      <header className="sticky top-0 bg-[#e6f4f6]/95 backdrop-blur-sm shadow-md z-10 py-6">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.h1
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-4xl font-bold text-center bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent"
+          >
+            Mentalia
+          </motion.h1>
+          <motion.h2
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-xl text-center text-gray-600 mt-2 font-medium"
+          >
+            Tips para tu Salud Mental
+          </motion.h2>
         </div>
+      </header>
 
-        <div className="space-y-4">
+      <main className="max-w-4xl mx-auto p-6 pb-16 space-y-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="grid gap-8"
+        >
           {/* Daily Routines */}
-          <Card className="bg-[#e9d5ff] p-4 flex gap-4">
-            <div className="w-16 h-16 shrink-0">
-              <Image
-                src="/placeholder.svg"
-                alt="Routine icon"
-                width={64}
-                height={64}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Rutinas Diarias</h3>
-              <ul className="text-sm text-gray-700 list-disc pl-4">
-                <li>Mantén un horario regular de sueño</li>
-                <li>Haz ejercicio moderado diariamente</li>
-                <li>Come de manera equilibrada</li>
-                <li>Toma descansos durante el día</li>
-                <li>Limita el uso de redes sociales</li>
-              </ul>
-            </div>
-          </Card>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Card className="group bg-gradient-to-br from-[#e9d5ff] to-[#f3e8ff] p-8 hover:shadow-xl transition-all duration-300 rounded-xl border-none">
+              <div className="flex gap-8 items-start">
+                <div className="shrink-0 bg-white/50 p-3 rounded-xl group-hover:scale-105 transition-transform">
+                  <Heart className="w-10 h-10 text-purple-600 stroke-[1.5]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-3 text-purple-900">
+                    Rutinas Diarias
+                  </h3>
+                  <ul className="text-gray-700 space-y-2 leading-relaxed">
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Mantén un horario regular de sueño
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Haz ejercicio moderado diariamente
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Come de manera equilibrada
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Toma descansos durante el día
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Limita el uso de redes sociales
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
 
           {/* Emotional Management */}
-          <Card className="bg-[#e9d5ff] p-4 flex gap-4">
-            <div className="w-16 h-16 shrink-0">
-              <Image
-                src="/placeholder.svg"
-                alt="Emotional icon"
-                width={64}
-                height={64}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Manejo Emocional</h3>
-              <ul className="text-sm text-gray-700 list-disc pl-4">
-                <li>Practica la meditación o mindfulness</li>
-                <li>Escribe un diario de gratitud</li>
-                <li>Comparte tus sentimientos con otros</li>
-                <li>Aprende a decir &quot;no&quot; cuando lo necesites</li>
-                <li>Reconoce y acepta tus emociones</li>
-              </ul>
-            </div>
-          </Card>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Card className="group bg-gradient-to-br from-[#e9d5ff] to-[#f3e8ff] p-8 hover:shadow-xl transition-all duration-300 rounded-xl border-none">
+              <div className="flex gap-8 items-start">
+                <div className="shrink-0 bg-white/50 p-3 rounded-xl group-hover:scale-105 transition-transform">
+                  <Brain className="w-10 h-10 text-purple-600 stroke-[1.5]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-3 text-purple-900">
+                    Manejo Emocional
+                  </h3>
+                  <ul className="text-gray-700 space-y-2 leading-relaxed">
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Practica la meditación o mindfulness
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Escribe un diario de gratitud
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Comparte tus sentimientos con otros
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Aprende a decir &quot;no&quot; cuando lo necesites
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <ArrowRight className="w-4 h-4 text-purple-500" />
+                      Reconoce y acepta tus emociones
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
 
           {/* Social Connection */}
-          <Card className="bg-[#e9d5ff] p-4 flex gap-4">
-            <div className="w-16 h-16 shrink-0">
-              <Image
-                src="/placeholder.svg"
-                alt="Social icon"
-                width={64}
-                height={64}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold">Conexión Social</h3>
-              <p className="text-sm text-gray-700">
-                Mantén contacto regular con amigos y familia. Participa en
-                actividades grupales, únete a clubes o grupos de interés, y no
-                dudes en buscar apoyo cuando lo necesites.
-              </p>
-            </div>
-          </Card>
-        </div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Card className="group bg-gradient-to-br from-[#e9d5ff] to-[#f3e8ff] p-8 hover:shadow-xl transition-all duration-300 rounded-xl border-none">
+              <div className="flex gap-8 items-start">
+                <div className="shrink-0 bg-white/50 p-3 rounded-xl group-hover:scale-105 transition-transform">
+                  <Users className="w-10 h-10 text-purple-600 stroke-[1.5]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-3 text-purple-900">
+                    Conexión Social
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    Mantén contacto regular con amigos y familia. Participa en
+                    actividades grupales, únete a clubes o grupos de interés, y
+                    no dudes en buscar apoyo cuando lo necesites.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        </motion.div>
 
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold">Recursos Adicionales</h2>
-          <p className="text-gray-700">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="bg-white rounded-xl p-8 shadow-xl"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Sparkles className="w-8 h-8 text-purple-600" />
+            <h2 className="text-2xl font-bold text-purple-900">
+              Recursos Adicionales
+            </h2>
+          </div>
+          <p className="text-gray-700 mb-6 leading-relaxed">
             Aquí encontrarás contenido que te ayudará a mantener una buena salud
             mental:
           </p>
 
-          <Card className="bg-[#e9d5ff] p-4">
-            <h3 className="font-semibold mb-2">Actividades Recomendadas:</h3>
-            <ul className="text-sm text-gray-700 space-y-2 list-disc pl-4">
-              <li>Yoga y ejercicios de respiración</li>
-              <li>Lectura y actividades creativas</li>
-              <li>Paseos en la naturaleza</li>
-              <li>Hobbies que disfrutes</li>
-            </ul>
-          </Card>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Card className="group bg-gradient-to-br from-[#e9d5ff] to-[#f3e8ff] p-6 hover:shadow-lg transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-white/50 p-2 rounded-lg group-hover:scale-105 transition-transform">
+                  <Leaf className="w-6 h-6 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-purple-900">
+                  Actividades Recomendadas:
+                </h3>
+              </div>
+              <ul className="text-gray-700 space-y-2 leading-relaxed pl-4">
+                <li className="flex items-center gap-3">
+                  <ArrowRight className="w-4 h-4 text-purple-500" />
+                  Yoga y ejercicios de respiración
+                </li>
+                <li className="flex items-center gap-3">
+                  <ArrowRight className="w-4 h-4 text-purple-500" />
+                  Lectura y actividades creativas
+                </li>
+                <li className="flex items-center gap-3">
+                  <ArrowRight className="w-4 h-4 text-purple-500" />
+                  Paseos en la naturaleza
+                </li>
+                <li className="flex items-center gap-3">
+                  <ArrowRight className="w-4 h-4 text-purple-500" />
+                  Hobbies que disfrutes
+                </li>
+              </ul>
+            </Card>
+          </motion.div>
+        </motion.section>
 
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold">
-              Videos de Ejercicios de Relajación
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="bg-white rounded-xl p-8 shadow-xl"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Youtube className="w-8 h-8 text-purple-600" />
+            <h2 className="text-2xl font-bold text-purple-900">
+              Videos de Relajación
             </h2>
-            <div className="aspect-w-16 aspect-h-9">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/VIDEO_ID"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-xl"
-              ></iframe>
-            </div>
           </div>
-        </div>
-      </div>
-    </div>
+          <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-purple-50 to-white rounded-xl overflow-hidden shadow-inner">
+            <iframe
+              src="https://www.youtube.com/embed/8-mCglCgmHY"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </div>
+        </motion.section>
+      </main>
+    </motion.div>
   );
 }
