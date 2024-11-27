@@ -20,9 +20,6 @@ export default function LearnMorePage() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-center"
         >
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-[#4a148c] to-[#b388ff] text-transparent bg-clip-text">
-            Mentalia
-          </h1>
         </motion.div>
 
         {/* Title Section */}

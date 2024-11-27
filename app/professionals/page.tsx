@@ -91,18 +91,14 @@ export default function ProfessionalsPage() {
       transition={{ duration: 0.5 }}
       className="flex min-h-screen bg-gradient-to-b from-[#e6f4f6] to-[#f0f7f8]"
     >
-      <div className="w-full max-w-3xl mx-auto p-6 space-y-8">
-        {/* Header Section */}
-        <motion.div
+      <div className="w-full max-w-2xl mx-auto p-6 space-y-8 pb-0">
+          <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center space-y-4"
+          className="text-center "
         >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-[#4a148c] to-[#b388ff] text-transparent bg-clip-text">
-            Mentalia
-          </h1>
-          <h2 className="text-2xl text-gray-700 font-medium">Profesionales</h2>
+          <h2 className="text-2xl text-gray-700">Profesionales</h2>
         </motion.div>
 
         {/* Filter Section */}
