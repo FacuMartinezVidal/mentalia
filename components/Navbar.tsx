@@ -2,6 +2,7 @@
 
 import {
   Brain,
+  HeartIcon,
   HelpCircle,
   LightbulbIcon,
   LineChart,
@@ -18,7 +19,7 @@ export function Navbar() {
     { href: "/advices", icon: LightbulbIcon, label: "Consejos" },
     { href: "/analysis", icon: LineChart, label: "Análisis" },
     { href: "/profile", icon: Brain, label: "Perfil" },
-    { href: "/help", icon: HelpCircle, label: "Ayuda" },
+    { href: "/help", icon: HeartIcon, label: "Ayuda" },
     { href: "/professionals", icon: Users, label: "Profesionales" },
   ];
 

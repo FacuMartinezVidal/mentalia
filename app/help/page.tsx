@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function LearnMorePage() {
   return (
@@ -13,29 +14,19 @@ export default function LearnMorePage() {
       className="flex min-h-screen bg-[#e6f4f6]"
     >
       <div className="w-full max-w-md mx-auto p-6 space-y-8">
-        {/* Header */}
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center"
-        >
-        </motion.div>
-
-        {/* Title Section */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="space-y-2"
-        >
+        {/* Header with Image */}
+        <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold text-gray-800">
             Conocé más sobre...
           </h2>
-          <p className="text-gray-600">
-            Selecciona un tema para obtener más información
-          </p>
-        </motion.div>
+          <Image
+            src="/images/3.svg"
+            alt="Cerebro ilustrativo"
+            width={130}
+            height={130}
+            className="object-contain"
+          />
+        </div>
 
         {/* Buttons Grid */}
         <motion.div

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AnalysisPage() {
   return (
@@ -12,26 +13,14 @@ export default function AnalysisPage() {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-[#e6f4f6]"
     >
-        <div className="w-full max-w-2xl mx-auto p-6 space-y-8 pb-0">
-          <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center "
-        >
-          <h2 className="text-2xl text-gray-700">Análisis preliminar</h2>
-        </motion.div>
-        </div>
-
-
-      <main className="max-w-4xl mx-auto p-6 pb-16">
+      <main className="max-w-4xl mx-auto p-3">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <Card className="bg-gradient-to-br from-[#e9d5ff] to-[#f3e8ff] p-8 hover:shadow-xl transition-all duration-300 rounded-xl border-none">
-            <CardContent className="p-6 space-y-8">
+            <CardContent className="p-6 ">
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -47,6 +36,19 @@ export default function AnalysisPage() {
                   tratamiento que necesitas, es esencial que hables con un
                   psicólogo u otro profesional de la salud mental.
                 </p>
+              </motion.div>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="flex justify-center"
+              >
+                <Image
+                  src="/images/4.svg"
+                  alt="Ilustración de análisis"
+                  width={200}
+                  height={200}
+                />
               </motion.div>
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
