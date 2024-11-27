@@ -18,38 +18,62 @@ import Image from "next/image";
 
 // Sample data
 const professionals = [
-  {
-    id: 1,
-    name: "Veronica Suarez",
-    profession: "Psicóloga",
-    location: "Cordoba, Capital",
-    image: "/placeholder.svg?height=80&width=80",
-    type: "psicologo",
-  },
-  {
-    id: 2,
-    name: "Pablo Gomez",
-    profession: "Psiquiatra",
-    location: "Cordoba, Capital",
-    image: "/placeholder.svg?height=80&width=80",
-    type: "psiquiatra",
-  },
-  {
-    id: 3,
-    name: "Sol Fernandez",
-    profession: "Psicóloga",
-    location: "Cordoba, Capital",
-    image: "/placeholder.svg?height=80&width=80",
-    type: "psicologo",
-  },
-  {
-    id: 4,
-    name: "Emiliano Gonzalez",
-    profession: "Psicólogo",
-    location: "Cordoba, Capital",
-    image: "/placeholder.svg?height=80&width=80",
-    type: "psicologo",
-  },
+    {
+      id: 1,
+      name: "Veronica Suarez",
+      profession: "Psicóloga",
+      location: "Córdoba, Capital",
+      image: "/images/veronica.jpg?height=80&width=80",
+      type: "psicologo",
+      biography:
+        "Verónica cuenta con más de 10 años de experiencia en psicología clínica. Se destaca por su enfoque empático y personalizado en el tratamiento de sus pacientes.",
+      specializations: ["Ansiedad", "Depresión", "Terapia Familiar"],
+      experience:
+        "Ha trabajado en hospitales, centros de salud y consultas privadas, ayudando a cientos de pacientes a superar sus desafíos emocionales y mentales.",
+      contact: "v.suarez.psicologia@gmail.com",
+    },
+    {
+      id: 2,
+      name: "Pablo Gomez",
+      profession: "Psiquiatra",
+      location: "Córdoba, Capital",
+      image: "/images/pablo.jpg?height=80&width=80",
+      type: "psiquiatra",
+      biography:
+        "Pablo es un psiquiatra con especialización en trastornos del estado de ánimo y psicofarmacología. Ofrece tratamientos efectivos y modernos para mejorar la calidad de vida de sus pacientes.",
+      specializations: ["Depresión", "Trastorno Bipolar"],
+      experience:
+        "Ha trabajado en instituciones psiquiátricas reconocidas y colabora regularmente en investigaciones sobre salud mental.",
+      contact: "pablogomez@consultoriogomez.com",
+    },
+    {
+      id: 3,
+      name: "Sol Fernandez",
+      profession: "Psicóloga",
+      location: "Córdoba, Capital",
+      image: "/images/sol.jpg?height=80&width=80",
+      type: "psicologo",
+      biography:
+        "Sol se especializa en terapia cognitivo-conductual y tiene experiencia en el tratamiento de la ansiedad. Su enfoque práctico y orientado a resultados ha ayudado a numerosos pacientes.",
+      specializations: ["Ansiedad", "Terapia Cognitivo-Conductual"],
+      experience:
+        "Trabajó en centros de salud mental y consulta privada, enfocándose en adultos jóvenes y adolescentes.",
+      contact: "contacto@solfernandezpsicologia.com",
+    },
+    {
+      id: 4,
+      name: "Emiliano Gonzalez",
+      profession: "Psicólogo",
+      location: "Córdoba, Capital",
+      image: "/images/emiliano.jpg?height=80&width=80",
+      type: "psicologo",
+      biography:
+        "Emiliano trabaja con adolescentes y adultos, enfocándose en el desarrollo personal y el fortalecimiento de habilidades emocionales.",
+      specializations: ["Desarrollo Personal", "Terapia de Pareja"],
+      experience:
+        "Tiene una amplia trayectoria en terapias individuales y grupales, ayudando a sus pacientes a alcanzar su máximo potencial.",
+      contact: "e.gonzalez.adultos@gmail.com",
+    },
 ];
 
 export default function ProfessionalsPage() {
@@ -142,20 +166,13 @@ export default function ProfessionalsPage() {
             >
               <Card className="bg-white hover:bg-white transition-all duration-300 hover:shadow-md p-5">
                 <div className="flex gap-4">
-                  <div className="w-20 h-20 shrink-0 rounded-full bg-[#e9d5ff] flex items-center justify-center">
-                    <svg
-                      className="w-10 h-10 text-[#4a148c]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
+                  <div className="relative w-20 h-20 shrink-0 rounded-full bg-[#e9d5ff] overflow-hidden">
+                    <Image
+                      src={professional.image}
+                      alt={professional.name}
+                      layout="fill"
+                      className="rounded-full object-cover"
+                    />
                   </div>
 
                   <div className="flex-1 space-y-2">
@@ -169,23 +186,53 @@ export default function ProfessionalsPage() {
                     </div>
 
                     <div className="flex gap-2">
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="bg-[#e9d5ff] hover:bg-[#dbb8ff] border-none text-[#4a148c]"
-                          >
-                            Ver Info
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>{professional.name}</DialogTitle>
-                          </DialogHeader>
-                          {/* Add professional details here */}
-                        </DialogContent>
-                      </Dialog>
+                    <Dialog>
+  <DialogTrigger asChild>
+    <Button
+      variant="outline"
+      size="sm"
+      className="bg-[#e9d5ff] hover:bg-[#dbb8ff] border-none text-[#4a148c]"
+    >
+      Ver Info
+    </Button>
+  </DialogTrigger>
+  <DialogContent className="p-6 bg-white rounded-lg shadow-xl max-w-md mx-auto">
+    <DialogHeader>
+      <DialogTitle className="text-2xl font-bold text-[#4a148c]">
+        {professional.name}
+      </DialogTitle>
+      <p className="text-sm text-gray-500">{professional.profession} • {professional.location}</p>
+    </DialogHeader>
+    <div className="mt-4 space-y-4">
+      <p className="text-gray-800 leading-relaxed">
+        <strong>Biografía:</strong> {professional.biography}
+      </p>
+      <p className="text-gray-800">
+        <strong>Especializaciones:</strong>{" "}
+        <span className="text-gray-600">
+          {professional.specializations.join(", ")}
+        </span>
+      </p>
+      <p className="text-gray-800">
+        <strong>Experiencia:</strong>{" "}
+        <span className="text-gray-600">{professional.experience}</span>
+      </p>
+      <div className="bg-[#f3e5f5] rounded-lg p-4">
+        <p className="text-gray-800">
+          <strong>Contacto:</strong>{" "}
+          <a
+            href={`mailto:${professional.contact}`}
+            className="text-[#4a148c] hover:underline"
+          >
+            {professional.contact}
+          </a>
+        </p>
+      </div>
+    </div>
+    
+  </DialogContent>
+</Dialog>
+
 
                       <Button
                         variant="outline"
