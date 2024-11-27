@@ -1,30 +1,76 @@
 "use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState } from "react";
+import Image from "next/image";
 import { User, Lock } from "lucide-react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function LoginSignupPage() {
+  const [isSignup, setIsSignup] = useState(false); // State to toggle between login and signup
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState(""); // For signup only
   const [rememberMe, setRememberMe] = useState(false);
+  const [modalMessage, setModalMessage] = useState(""); // Message to show in the modal
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
   const router = useRouter();
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Handle login submission
-    router.push('/');
+    if (isSignup) {
+      // Handle signup submission
+      if (password !== confirmPassword) {
+        setModalMessage("Las contraseñas no coinciden.");
+        setIsModalOpen(true);
+        return;
+      }
+      setModalMessage("Cuenta creada exitosamente.");
+      setIsModalOpen(true);
+
+    } else {
+      router.push("/")
+    }
+    
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setIsSignup(!isSignup)
+    setEmail("");
+    setPassword("");
+    if (!isSignup) router.push("/"); // Redirect on successful login
   };
 
   return (
     <div className="container">
-      <div className="logo" style={{ marginTop: '0px' }}>
+      <div className="logo" style={{ marginTop: "0px" }}>
         <Image src="/images/icon.png" alt="Mentalia" width={250} height={250} />
       </div>
 
       <form onSubmit={handleSubmit} className="form">
-        <label htmlFor="email">Ingresa tu usuario o correo electrónico</label>
+        <h2 className="form-title">
+          {isSignup ? "Regístrate en Mentalia" : "Inicia sesión en Mentalia"}
+        </h2>
+
+        {isSignup && (
+          <div>
+            <label htmlFor="name">Nombre Completo</label>
+            <div className="input-group">
+              <User />
+              <input
+                type="text"
+                id="name"
+                placeholder="Martina Gómez"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+        )}
+
+        <label htmlFor="email">Correo electrónico</label>
         <div className="input-group">
           <User />
           <input
@@ -37,7 +83,7 @@ export default function Login() {
           />
         </div>
 
-        <label htmlFor="password">Ingresa tu contraseña</label>
+        <label htmlFor="password">Contraseña</label>
         <div className="input-group">
           <Lock />
           <input
@@ -50,20 +96,70 @@ export default function Login() {
           />
         </div>
 
-        <div className="remember-me">
-          <input
-            type="checkbox"
-            id="rememberMe"
-            checked={rememberMe}
-            onChange={() => setRememberMe(!rememberMe)}
-          />
-          <label htmlFor="rememberMe" style={{ marginLeft: '8px' }}>Recordarme</label>
-        </div>
+        {isSignup && (
+          <div>
+            <label htmlFor="confirmPassword">Confirmar Contraseña</label>
+            <div className="input-group">
+              <Lock />
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="********"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+        )}
 
-        <button type="submit" className="submit-btn">Ingresar</button>
+        {!isSignup && (
+          <div className="remember-me">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+            />
+            <label htmlFor="rememberMe" style={{ marginLeft: "8px" }}>
+              Recordarme
+            </label>
+          </div>
+        )}
 
-        <a href="#" className="forgot-password">Olvidé mi contraseña</a>
+        <button type="submit" className="submit-btn">
+          {isSignup ? "Registrarse" : "Ingresar"}
+        </button>
+
+        {!isSignup && (
+          <a href="#" className="forgot-password">
+            Olvidé mi contraseña
+          </a>
+        )}
+
+        <p className="toggle-text">
+          {isSignup ? "¿Ya tienes una cuenta?" : "¿No tienes una cuenta?"}{" "}
+          <button
+            type="button"
+            className="toggle-button"
+            onClick={() => setIsSignup(!isSignup)}
+          >
+            {isSignup ? "Inicia sesión" : "Regístrate"}
+          </button>
+        </p>
       </form>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <p>{modalMessage}</p>
+            <button className="close-btn" onClick={handleCloseModal}>
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .container {
@@ -78,17 +174,7 @@ export default function Login() {
         }
 
         .logo {
-          display: flex;
-          align-items: center;
-          justify-content: center;
           margin-bottom: 20px;
-        }
-
-        .logo h1 {
-          font-size: 32px;
-          color: #4b0082;
-          margin-left: 10px;
-          font-weight: bold;
         }
 
         .form {
@@ -100,6 +186,14 @@ export default function Login() {
           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
           display: flex;
           flex-direction: column;
+        }
+
+        .form-title {
+          font-size: 18px;
+          font-weight: bold;
+          color: #4b0082;
+          margin-bottom: 20px;
+          text-align: center;
         }
 
         label {
@@ -159,6 +253,60 @@ export default function Login() {
 
         .forgot-password:hover {
           text-decoration: underline;
+        }
+
+        .toggle-text {
+          text-align: center;
+          margin-top: 20px;
+          color: #333;
+        }
+
+        .toggle-button {
+          background: none;
+          border: none;
+          color: #4b0082;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        .toggle-button:hover {
+          text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .modal-content {
+          background: white;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .close-btn {
+          background-color: #4b0082;
+          color: white;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          margin-top: 10px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        .close-btn:hover {
+          background-color: #37006b;
         }
       `}</style>
     </div>
