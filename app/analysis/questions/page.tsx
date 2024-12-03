@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -26,7 +26,7 @@ const QUESTIONS = [
   {
     id: 5,
     text: "¿Experimentas momentos de tensión física como dolor de cabeza o tensión muscular?",
-  },
+  }
 ];
 
 const RESPONSES = [
@@ -40,6 +40,7 @@ const RESPONSES = [
 export default function QuestionsPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
   const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
@@ -48,7 +49,7 @@ export default function QuestionsPage() {
     if (currentQuestion < QUESTIONS.length - 1) {
       setCurrentQuestion((prev) => prev + 1);
     } else {
-      router.push("/analysis/results");
+      setIsModalOpen(true);
     }
   };
 
@@ -57,6 +58,15 @@ export default function QuestionsPage() {
       setCurrentQuestion((prev) => prev - 1);
     }
   };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      const timer = setTimeout(() => {
+        router.push("/analysis/results");
+      }, Math.floor(Math.random() * (4500 - 500 + 1)) + 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [isModalOpen]);
 
   return (
     <div className="min-h-screen bg-[#e6f4f6]">
@@ -158,6 +168,29 @@ export default function QuestionsPage() {
           </Button>
         </div>
       </main>
+
+      {isModalOpen && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 backdrop-blur-sm">
+    <div className="bg-purple-100 p-8 rounded-lg shadow-xl text-center">
+      <h2 className="text-xl font-bold text-purple-800">✨ Estamos procesando tus resultados ✨</h2>
+      <p className="text-sm text-purple-700 mt-2">
+        Esto solo tomará unos momentos.
+      </p>
+      
+      <div className="flex justify-center my-6">
+        <img src="/images/9_analisis.svg" alt="Loading" className="animate-bounce w-64 h-64" />
+      </div>
+
+      <p className="text-lg font-semibold text-purple-800">⏳ Por favor, espera un momento... ⏳</p>
+      <p className="text-xs text-purple-600 mt-2">
+        Gracias por tu paciencia. Estamos aquí para ayudarte.
+      </p>
+    </div>
+  </div>
+)}
+
+
+
     </div>
   );
 }

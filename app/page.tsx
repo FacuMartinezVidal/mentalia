@@ -34,7 +34,7 @@ export default function Component() {
             >
               <div className="text-center">
                 <Image
-                  src="/images/5.svg" // Cambia por la ruta de tu imagen SVG
+                  src="/images/5_bienvenida.svg" // Cambia por la ruta de tu imagen SVG
                   alt="Ilustración de bienvenida"
                   width={200}
                   height={200}
