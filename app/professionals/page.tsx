@@ -100,9 +100,21 @@ export default function ProfessionalsPage() {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center mb-6"
+          className="text-center mb-6 flex items-center justify-center"
         >
-          <h2 className="text-2xl text-gray-700">Profesionales</h2>
+          <div className="flex items-center justify-center">
+          <h2 className="text-2xl font-bold text-gray-800 mr-8">
+            Profesionales
+          </h2>
+          <Image
+            src="/images/3_profesionales.svg"
+            alt="Cerebro ilustrativo"
+            width={130}
+            height={130}
+            className="object-contain"
+          />
+          </div>
+          
         </motion.div>
 
         {/* Filter Section */}
@@ -197,7 +209,7 @@ export default function ProfessionalsPage() {
                   </Card>
                 </DialogTrigger>
                 <DialogContent>
-                  <DialogHeader>
+                  <DialogHeader className="flex flex-col items-center">
                     <DialogTitle className="text-2xl font-bold text-[#4a148c]">
                       {professional.name}
                     </DialogTitle>

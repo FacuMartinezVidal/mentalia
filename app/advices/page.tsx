@@ -1,6 +1,7 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ConsejosPage() {
   return (
@@ -10,16 +11,28 @@ export default function ConsejosPage() {
       transition={{ duration: 0.5 }}
       className="flex min-h-screen bg-gradient-to-b from-[#e6f4f6] to-[#f0f7f8]"
     >
-      <div className="w-full max-w-2xl mx-auto p-6 space-y-8 pb-0">
+      <div className="w-full max-w-2xl mx-auto px-4 py-6 space-y-6">
           <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-center "
         >
-          <h2 className="text-2xl text-gray-700">Consejos</h2>
+          <div className="flex items-center justify-center">
+          <h2 className="text-2xl font-bold text-gray-800 mr-8">
+            Consejos
+          </h2>
+          <Image
+            src="/images/4_consejos.svg"
+            alt="Cerebro ilustrativo"
+            width={130}
+            height={130}
+            className="object-contain"
+          />
+          
+          </div>
         </motion.div>
-
+        
 
         <div className="space-y-6">
           <motion.div
@@ -139,9 +152,18 @@ export default function ConsejosPage() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="space-y-6 bg-white/50 p-6 rounded-xl backdrop-blur-sm"
         >
-          <h2 className="text-2xl font-bold text-[#4a148c]">
+          <div className="flex items-center justify-center">
+          <h2 className="text-2xl font-bold text-[#4a148c] pr-6">
             Guía de Meditación
           </h2>
+          <Image
+            src="/images/6_guia.svg"
+            alt="Cerebro ilustrativo"
+            width={130}
+            height={130}
+            className="object-contain"
+            />
+            </div>
           <p className="text-gray-700 text-lg">
             Estos videos te serán de gran ayuda para aprender a meditar por tu
             cuenta!
