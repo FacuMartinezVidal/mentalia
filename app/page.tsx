@@ -23,8 +23,8 @@ export default function Component() {
             >
               <div className="text-center relative">
                 <Image
-                  src="/images/5.svg"
-                  alt="Mendi"
+                  src="/images/5_bienvenida.svg" // Cambia por la ruta de tu imagen SVG
+                  alt="Ilustración de bienvenida"
                   width={200}
                   height={200}
                   className="mx-auto"

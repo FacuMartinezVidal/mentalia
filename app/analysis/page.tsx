@@ -44,10 +44,10 @@ export default function AnalysisPage() {
                 className="flex justify-center"
               >
                 <Image
-                  src="/images/4.svg"
+                  src="/images/7_analisis.svg"
                   alt="Ilustración de análisis"
-                  width={200}
-                  height={200}
+                  width={150}
+                  height={150}
                 />
               </motion.div>
               <motion.div

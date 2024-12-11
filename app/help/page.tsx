@@ -20,7 +20,7 @@ export default function LearnMorePage() {
             Conocé más sobre...
           </h2>
           <Image
-            src="/images/3.svg"
+            src="/images/8_ayuda.svg"
             alt="Cerebro ilustrativo"
             width={130}
             height={130}
