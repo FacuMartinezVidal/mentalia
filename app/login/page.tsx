@@ -21,12 +21,6 @@ export default function LoginSignupPage() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (isSignup) {
-      // Handle signup submission
-      if (password !== confirmPassword) {
-        setModalMessage("Las contraseñas no coinciden.");
-        setIsModalOpen(true);
-        return;
-      }
       setModalMessage("Cuenta creada exitosamente.");
       setIsModalOpen(true);
     } else {
