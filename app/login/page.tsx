@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { User, Lock } from "lucide-react";
+import { User, Lock, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function LoginSignupPage() {
@@ -15,7 +15,9 @@ export default function LoginSignupPage() {
   const [modalMessage, setModalMessage] = useState(""); // Message to show in the modal
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
   const router = useRouter();
-
+  const [lastName, setLastName] = useState("");
+  const [location, setLocation] = useState("");
+  const [age, setAge] = useState("");
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (isSignup) {
@@ -42,10 +44,6 @@ export default function LoginSignupPage() {
 
   return (
     <div className="container">
-      <div className="logo" style={{ marginTop: "0px" }}>
-        <Image src="/images/icon.png" alt="Mentalia" width={250} height={250} />
-      </div>
-
       <form onSubmit={handleSubmit} className="form">
         <h2 className="form-title">
           {isSignup ? "Regístrate en Mentalia" : "Inicia sesión en Mentalia"}
@@ -81,6 +79,61 @@ export default function LoginSignupPage() {
           />
         </div>
 
+        {isSignup && (
+          <>
+            <label htmlFor="name">Nombre</label>
+            <div className="input-group">
+              <User />
+              <input
+                type="text"
+                id="name"
+                placeholder="Martina"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <label htmlFor="lastName">Apellido</label>
+            <div className="input-group">
+              <User />
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Gómez Pérez"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
+
+            <label htmlFor="age">Edad</label>
+            <div className="input-group">
+              <User />
+              <input
+                type="number"
+                id="age"
+                placeholder="25"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                required
+              />
+            </div>
+
+            <label htmlFor="location">Ubicación</label>
+            <div className="input-group">
+              <MapPin />
+              <input
+                type="text"
+                id="location"
+                placeholder="Ciudad, País"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                required
+              />
+            </div>
+          </>
+        )}
+
         <label htmlFor="password">Contraseña</label>
         <div className="input-group">
           <Lock />
@@ -93,23 +146,6 @@ export default function LoginSignupPage() {
             required
           />
         </div>
-
-        {isSignup && (
-          <div>
-            <label htmlFor="confirmPassword">Confirmar Contraseña</label>
-            <div className="input-group">
-              <Lock />
-              <input
-                type="password"
-                id="confirmPassword"
-                placeholder="********"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-        )}
 
         {!isSignup && (
           <div className="remember-me">
