@@ -1,14 +1,29 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Progress } from "@/components/ui/progress";
 
-// You'll need to pass the actual results through state management or URL params
+// Replace RESULTS with tips
 const RESULTS = [
-  { category: "Ansiedad", percentage: 75, color: "bg-orange-400" },
-  { category: "Depresión", percentage: 25, color: "bg-red-400" },
-  { category: "Regulación Emocional", percentage: 50, color: "bg-purple-400" },
-  { category: "Estrés", percentage: 35, color: "bg-blue-400" },
+  {
+    category: "Pensamientos obsesivos",
+    tip: "Practica ejercicios de respiración profunda y mindfulness diariamente para reducir los síntomas de ansiedad.",
+    color: "text-orange-600",
+  },
+  {
+    category: "Preocupacion constante por el futuro",
+    tip: "Mantén una rutina diaria estructurada y busca actividades que te generen satisfacción.",
+    color: "text-red-600",
+  },
+  {
+    category: "Necesidad de control las situaciones",
+    tip: "Identifica tus emociones y aprende técnicas de autorregulación como el diario emocional.",
+    color: "text-purple-600",
+  },
+  {
+    category: "Desesperacion ante lo desconocido",
+    tip: "Incorpora actividad física regular y momentos de descanso en tu rutina diaria.",
+    color: "text-blue-600",
+  },
 ];
 
 const CircleChart = ({
@@ -63,7 +78,7 @@ export default function ResultsPage() {
   return (
     <div className="min-h-screen bg-[#e6f4f6]">
       <div className="w-full max-w-2xl mx-auto p-6 space-y-8 pb-0">
-          <motion.div
+        <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -71,14 +86,14 @@ export default function ResultsPage() {
         >
           <h2 className="text-2xl text-gray-700">Cuestionario de Evaluación</h2>
         </motion.div>
-        </div>
+      </div>
 
       <main className="max-w-4xl mx-auto p-6 pb-16 space-y-8">
         <Card className="bg-gradient-to-br from-[#e9d5ff] to-[#f3e8ff] p-8 hover:shadow-xl transition-all duration-300 rounded-xl border-none">
           <div className="space-y-8">
             <div className="space-y-6">
               <h3 className="text-xl font-semibold text-purple-900">
-                Indicadores por Categoría
+                En base a tus respuestas, podes estar atravesando por:
               </h3>
               <div className="space-y-4">
                 {RESULTS.map((result, index) => (
@@ -89,14 +104,12 @@ export default function ResultsPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className="flex justify-between text-sm font-medium">
-                      <span>{result.category}</span>
-                      <span>{result.percentage}%</span>
+                    <div className="p-4 rounded-lg bg-white/50">
+                      <h4 className={`font-semibold ${result.color} mb-2`}>
+                        {result.category}
+                      </h4>
+                      <p className="text-gray-700">{result.tip}</p>
                     </div>
-                    <Progress
-                      value={result.percentage}
-                      className={`h-2 bg-white/50 ${result.color}`}
-                    />
                   </motion.div>
                 ))}
               </div>
@@ -104,7 +117,7 @@ export default function ResultsPage() {
 
             <div className="pt-8 border-t border-purple-200">
               <h3 className="text-xl font-semibold text-purple-900 mb-6">
-                Distribución General
+                Esto se puede relacionar con:
               </h3>
               <div className="flex flex-wrap justify-center gap-6">
                 <CircleChart percentage={75} label="Ansiedad" delay={0.2} />
