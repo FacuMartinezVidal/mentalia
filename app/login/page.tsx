@@ -81,31 +81,6 @@ export default function LoginSignupPage() {
 
         {isSignup && (
           <>
-            <label htmlFor="name">Nombre</label>
-            <div className="input-group">
-              <User />
-              <input
-                type="text"
-                id="name"
-                placeholder="Martina"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-            <label htmlFor="lastName">Apellido</label>
-            <div className="input-group">
-              <User />
-              <input
-                type="text"
-                id="lastName"
-                placeholder="Gómez Pérez"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                required
-              />
-            </div>
-
             <label htmlFor="age">Edad</label>
             <div className="input-group">
               <User />
