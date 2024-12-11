@@ -27,19 +27,17 @@ export default function LoginSignupPage() {
       }
       setModalMessage("Cuenta creada exitosamente.");
       setIsModalOpen(true);
-
     } else {
-      router.push("/")
+      router.push("/");
     }
-    
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setIsSignup(!isSignup)
+    setIsSignup(!isSignup);
     setEmail("");
     setPassword("");
-    if (!isSignup) router.push("/"); // Redirect on successful login
+    if (!isSignup) router.push("/home"); // Redirect on successful login
   };
 
   return (
