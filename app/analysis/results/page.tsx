@@ -15,7 +15,7 @@ const RESULTS = [
     color: "text-red-600",
   },
   {
-    category: "Necesidad de control las situaciones",
+    category: "Necesidad de controlar las situaciones",
     tip: "Identifica tus emociones y aprende técnicas de autorregulación como el diario emocional.",
     color: "text-purple-600",
   },
